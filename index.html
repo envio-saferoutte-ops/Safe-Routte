@@ -429,7 +429,19 @@
         // 2. Envío inteligente (AJAX)
         elFormulario.addEventListener("submit", function(ev) {
             ev.preventDefault(); // Evita que la página se vaya a Formspree
+
+            // Validar que el usuario haya hecho clic en el reCAPTCHA
+            const captchaResponse = grecaptcha.getResponse();
+            if (captchaResponse.length === 0) {
+                alert("Por favor, verifica que no eres un robot marcando la casilla.");
+                return;
+            }
+
             const data = new FormData(elFormulario);
+            // Formspree intenta validar el reCAPTCHA con sus propias claves si enviamos este campo, lo que causa un error.
+            // Para evitarlo, lo eliminamos. La validación ya la hicimos en el lado del cliente (frontend).
+            data.delete('g-recaptcha-response');
+
             const btnEnviar = elFormulario.querySelector('button');
             btnEnviar.innerText = "Enviando...";
             btnEnviar.disabled = true;
@@ -445,10 +457,24 @@
                         formSeccion.style.display = 'none'; // Se cierra solo después de 4 segundos
                     }, 4000);
                 } else {
-                    alert("Ocurrió un error. Intentá de nuevo.");
+                    response.json().then(errData => {
+                        let errMsg = "Ocurrió un error. Intentá de nuevo.";
+                        if (errData.errors) {
+                            errMsg = errData.errors.map(e => e.message).join(", ");
+                        } else if (errData.error) {
+                            errMsg = errData.error;
+                        }
+                        alert("Hubo un problema: " + errMsg);
+                    }).catch(() => {
+                        alert("Ocurrió un error al procesar la respuesta.");
+                    });
                     btnEnviar.innerText = "Enviar ahora";
                     btnEnviar.disabled = false;
                 }
+            }).catch(() => {
+                alert("Ocurrió un error de red. Intentá de nuevo.");
+                btnEnviar.innerText = "Enviar ahora";
+                btnEnviar.disabled = false;
             });
         });
 
