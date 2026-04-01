@@ -136,81 +136,202 @@
             box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2);
         }
 
-    /* =========================================================
+        /* =========================================================
        ACTUALIZACIÓN 2026: CSS MASTER RESPONSIVO Y GLASSMORPHISM
        Sobrescribe estilos en línea para celular y moderniza visuales
        ========================================================= */
-    * { box-sizing: border-box !important; }
+        * {
+            box-sizing: border-box !important;
+        }
 
-    /* Barra de navegación moderna (Glass) */
-    header {
-      background: rgba(10, 14, 20, 0.95) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid rgba(0, 170, 255, 0.2) !important;
-      display: flex !important;
-      flex-wrap: wrap !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-    }
-    
-    header nav {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      gap: 15px !important;
-      justify-content: center !important;
-    }
+        /* Barra de navegación moderna (Glass) */
+        header {
+            background: rgba(10, 14, 20, 0.95) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2) !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
 
-    header nav a:hover { color: #00aaff !important; text-shadow: 0 0 10px rgba(0,170,255,0.8); }
-    
-    .tech-card, .card-servicio, div[style*="max-width: 900px"], div[style*="border-left: 5px solid"], div[style*="border-left: 5px solid #00a8ff"] {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; 
-    }
+        header nav {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 15px !important;
+            justify-content: center !important;
+        }
 
-    form input, form textarea { transition: all 0.3s; outline: none !important; }
-    form input:focus, form textarea:focus { border-color: #00aaff !important; box-shadow: 0 0 8px rgba(0, 170, 255, 0.5) !important; }
+        header nav a:hover {
+            color: #00aaff !important;
+            text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+        }
 
-    /* EFECTOS Y RESPONSIVIDAD PARA MÓVILES (THE SECRET SAUCE) */
-    @media (max-width: 768px) {
-      header { padding: 15px !important; flex-direction: column !important; gap: 15px !important; }
-      header div[style*="font-size: 24px"] { font-size: 20px !important; }
-      header nav { margin-top: 5px !important; width: 100% !important; gap: 12px !important; }
-      header nav a { font-size: 14.5px !important; margin: 0 !important; }
+        .tech-card,
+        .card-servicio,
+        div[style*="max-width: 900px"],
+        div[style*="border-left: 5px solid"],
+        div[style*="border-left: 5px solid #00a8ff"] {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        }
 
-      .hero { background-attachment: scroll !important; background-position: center !important; padding-top: 130px !important; height: auto !important; min-height: 100vh !important; }
-      .hero h1 { font-size: 2.2rem !important; margin-bottom: 15px !important; }
-      .hero p { font-size: 1.05rem !important; padding: 0 10px !important; }
-      .hero button { padding: 14px 24px !important; font-size: 16px !important; }
+        form input,
+        form textarea {
+            transition: all 0.3s;
+            outline: none !important;
+        }
 
-      section { padding: 60px 15px !important; }
-      div[style*="max-width: 900px"], div[style*="max-width: 1000px"], div[style*="max-width: 1100px"] { padding: 30px 20px !important; }
+        form input:focus,
+        form textarea:focus {
+            border-color: #00aaff !important;
+            box-shadow: 0 0 8px rgba(0, 170, 255, 0.5) !important;
+        }
 
-      div[style*="display: flex; flex-wrap: wrap"] { flex-direction: column !important; align-items: center !important; }
-      div[style*="display: grid"] { grid-template-columns: 1fr !important; }
-      .tech-card, .card-servicio, .tech-card[style], .card-servicio[style] { width: 100% !important; max-width: 100% !important; margin-bottom: 20px !important; }
-      
-      #seccion-formulario { padding: 60px 15px !important; }
-      #seccion-formulario > div { padding: 30px 20px !important; }
+        /* EFECTOS Y RESPONSIVIDAD PARA MÓVILES (THE SECRET SAUCE) */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 25px !important;
+            }
 
-      p[style*="font-size: 1.1rem"] { font-size: 1rem !important; }
-      h2[style*="font-size: 2.5rem"] { font-size: 1.8rem !important; }
-      h2[style*="font-size: 2.2rem"] { font-size: 1.6rem !important; }
-      
-      .g-recaptcha { transform: scale(0.85) !important; transform-origin: center !important; }
-      div[style*="margin-bottom: 20px; display: flex; justify-content: center;"] { margin-left: -5% !important; }
-    }
-    
-    @media (max-width: 380px) {
-      .g-recaptcha { transform: scale(0.75) !important; }
-      .hero h1 { font-size: 1.8rem !important; }
-    }
-  </style>
+            header div[style*="font-size: 24px"] {
+                font-size: 20px !important;
+            }
+
+            #mobile-menu-btn {
+                display: block !important;
+            }
+
+            header nav {
+                display: none !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                background: rgba(10, 14, 20, 0.98) !important;
+                border-bottom: 1px solid rgba(0, 170, 255, 0.2) !important;
+                padding: 10px 0 20px 0 !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+            }
+            
+            header nav.active {
+                display: flex !important;
+                animation: fadeInDown 0.3s ease-out;
+            }
+
+            @keyframes fadeInDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            header nav a {
+                padding: 15px 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+                margin: 0 !important;
+                font-size: 16px !important;
+            }
+
+            .hero {
+                background-attachment: scroll !important;
+                background-position: center !important;
+                padding-top: 130px !important;
+                height: auto !important;
+                min-height: 100vh !important;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem !important;
+                margin-bottom: 15px !important;
+            }
+
+            .hero p {
+                font-size: 1.05rem !important;
+                padding: 0 10px !important;
+            }
+
+            .hero button {
+                padding: 14px 24px !important;
+                font-size: 16px !important;
+            }
+
+            section {
+                padding: 60px 15px !important;
+            }
+
+            div[style*="max-width: 900px"],
+            div[style*="max-width: 1000px"],
+            div[style*="max-width: 1100px"] {
+                padding: 30px 20px !important;
+            }
+
+            div[style*="display: flex; flex-wrap: wrap"] {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            div[style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            .tech-card,
+            .card-servicio,
+            .tech-card[style],
+            .card-servicio[style] {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-bottom: 20px !important;
+            }
+
+            #seccion-formulario {
+                padding: 60px 15px !important;
+            }
+
+            #seccion-formulario>div {
+                padding: 30px 20px !important;
+            }
+
+            p[style*="font-size: 1.1rem"] {
+                font-size: 1rem !important;
+            }
+
+            h2[style*="font-size: 2.5rem"] {
+                font-size: 1.8rem !important;
+            }
+
+            h2[style*="font-size: 2.2rem"] {
+                font-size: 1.6rem !important;
+            }
+
+            .g-recaptcha {
+                transform: scale(0.85) !important;
+                transform-origin: center !important;
+            }
+
+            div[style*="margin-bottom: 20px; display: flex; justify-content: center;"] {
+                margin-left: -5% !important;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .g-recaptcha {
+                transform: scale(0.75) !important;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <header
-        style="padding: 20px; display: flex; align-items: center; justify-content: space-between; background-color: #0a0e14; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #161b22;">
+        style="padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background-color: #0a0e14; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #161b22;">
 
         <a href="#inicio"
             style="text-decoration: none; display: flex; align-items: center; gap: 12px; cursor: pointer;">
@@ -229,7 +350,7 @@
 
             </div>
         </a>
-        </div>
+        <button id="mobile-menu-btn" style="display: none; background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 0;">☰</button>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#Historia">Quienes Somos</a>
@@ -647,6 +768,18 @@
             document.querySelectorAll('section').forEach(section => {
                 observer.observe(section);
             });
+
+            // 4. Menú Desplegable (Hamburguesa)
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const navMenu = document.querySelector('header nav');
+            if (menuBtn && navMenu) {
+                menuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navMenu.classList.remove('active'));
+                });
+            }
         });
     </script>
 
