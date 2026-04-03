@@ -212,25 +212,32 @@
                 background: rgba(10, 14, 20, 0.98) !important;
                 border-bottom: 1px solid rgba(0, 170, 255, 0.2) !important;
                 padding: 10px 0 20px 0 !important;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
                 border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
             }
-            
+
             header nav.active {
                 display: flex !important;
                 animation: fadeInDown 0.3s ease-out;
             }
 
             @keyframes fadeInDown {
-                from { opacity: 0; transform: translateY(-10px); }
-                to { opacity: 1; transform: translateY(0); }
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
             header nav a {
                 padding: 15px 0 !important;
                 width: 100% !important;
                 text-align: center !important;
-                border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
                 margin: 0 !important;
                 font-size: 16px !important;
             }
@@ -350,13 +357,15 @@
 
             </div>
         </a>
-        <button id="mobile-menu-btn" style="display: none; background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 0;">☰</button>
+        <button id="mobile-menu-btn"
+            style="display: none; background: none; border: none; color: white; font-size: 32px; cursor: pointer; padding: 0;">☰</button>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#Historia">Quienes Somos</a>
             <a href="#Tecnologia">Tecnología</a>
             <a href="#servicios">Servicios</a>
             <a href="#motos">Flota</a>
+            <a href="#faq">Preguntas</a>
         </nav>
     </header>
 
@@ -365,6 +374,85 @@
         <p>Envíos Rápidos, Seguros y Profesionales | CABA · AMBA</p>
         <button id="btn-presupuesto">📩 Pedir Presupuesto</button>
     </section>
+
+    <style>
+        /* Estilos minimalistas para el acordeón de Preguntas Frecuentes */
+        .faq-item {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            text-align: left;
+        }
+        .faq-item:hover {
+            border-color: rgba(0, 170, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .faq-item summary {
+            padding: 20px 25px;
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 600;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            transition: color 0.3s ease;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary:hover {
+            color: #00aaff;
+        }
+        .faq-item[open] summary {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #00aaff;
+            margin-bottom: 15px;
+        }
+        .faq-icon {
+            color: #00aaff;
+            font-size: 1.6rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            line-height: 1;
+        }
+        .faq-item[open] .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            padding: 0 25px 25px 25px;
+            color: #8b949e;
+            font-size: 1rem;
+            line-height: 1.6;
+            animation: fadeIn 0.4s ease-out;
+            margin: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ajustes Mobile para FAQ */
+        @media (max-width: 768px) {
+            .faq-item summary {
+                padding: 16px 20px;
+                font-size: 1.05rem;
+            }
+            .faq-answer {
+                padding: 0 20px 20px 20px;
+                font-size: 0.95rem;
+            }
+            #faq > div {
+                padding: 0 10px !important;
+            }
+        }
+    </style>
 
     <div id="seccion-formulario" style="display: none; padding: 100px 20px; background-color: #0d1117;">
         <div
@@ -652,6 +740,62 @@
             <div
                 style="margin-top: 40px; display: inline-block; padding: 12px 30px; border: 1px dashed #00a8ff; border-radius: 50px; color: #00a8ff; font-weight: bold; font-size: 0.9rem; background: rgba(0, 168, 255, 0.05);">
                 🛡️ TODAS LAS UNIDADES POSEEN SEGURO Y DOCUMENTACIÓN AL DÍA
+            </div>
+        </div>
+    </section>
+
+     <section id="faq" style="padding: 80px 20px; background-color: #0a0a0a; font-family: 'Segoe UI', sans-serif;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+
+            <h2 style="color: #00a8ff; font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px;">
+                ❓ Preguntas Frecuentes
+            </h2>
+
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                
+                <details class="faq-item">
+                    <summary>¿Tienen factura? <span class="faq-icon">+</span></summary>
+                    <div class="faq-answer">
+                        Sí, emitimos <strong>Factura C</strong> para empresas y particulares.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Cuánto tardan en llegar? <span class="faq-icon">+</span></summary>
+                    <div class="faq-answer">
+                        Estamos en Lomas. Para zona sur, llegamos en <strong>menos de 40 minutos</strong>.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Qué medios de pago aceptan? <span class="faq-icon">+</span></summary>
+                    <div class="faq-answer">
+                        <strong>Efectivo, Transferencia, y Mercado Pago.</strong>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Hacen repartos de Mercado Libre? <span class="faq-icon">+</span></summary>
+                    <div class="faq-answer">
+                        Sí, hacemos <strong>Envíos Flex</strong>.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Hasta qué hora trabajan? <span class="faq-icon">+</span></summary>
+                    <div class="faq-answer">
+                        Todos los dias de <strong>09:00 a 18:00</strong> (Incluido feriados).
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>¿Qué ciudad cubren? <span class="faq-icon">+</span></summary>
+                    <div class="faq-answer">
+                        <p style="margin-top: 0; margin-bottom: 10px;">Cubrimos <strong>CABA completa</strong> (Microcentro, Palermo, Belgrano, etc.) y todo el <strong>AMBA/GBA</strong> (Lomas de Zamora, Lanús, Banfield, Avellaneda, Quilmes, San Martín, Vicente López, San Isidro, Tigre y más).</p>
+                        <p style="margin: 0;">Además nos encargamos de <strong>enviar por correo</strong> si es necesario para el resto del país.</p>
+                    </div>
+                </details>
+
             </div>
         </div>
     </section>
